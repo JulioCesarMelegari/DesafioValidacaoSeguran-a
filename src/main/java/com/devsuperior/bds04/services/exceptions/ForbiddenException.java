@@ -1,0 +1,9 @@
+package com.devsuperior.bds04.services.exceptions;
+
+@SuppressWarnings("serial")
+public class ForbiddenException extends RuntimeException {
+
+    public ForbiddenException(String msg) {
+        super(msg);
+    }
+}

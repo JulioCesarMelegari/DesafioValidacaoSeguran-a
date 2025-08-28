@@ -17,16 +17,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
 
 @Entity
 @Table(name = "tb_user")
 public class User implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
-	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -36,8 +32,6 @@ public class User implements UserDetails{
 	
 	private String password;
 	
-	
-	@Setter(AccessLevel.NONE)
 	@ManyToMany
 	@JoinTable(name = "tb_user_role",
 				joinColumns = @JoinColumn(name = "user_id"),
@@ -81,10 +75,6 @@ public class User implements UserDetails{
 
 	public Set<Role> getRoles() {
 		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
 	}
 
 	public static long getSerialversionuid() {

@@ -40,5 +40,38 @@ Este é um sistema de eventos e cidades com uma relação N-1 entre eles:
 ## Event
 - **Nome** não pode ser vazio.  
 - **Data** não pode ser passada.  
-- **Cidade** não pode ser nula.  
+- **Cidade** não pode ser nula.
+
+# Critérios da API
+
+### Eventos (`/events`)
+- **POST /events**
+  - 401 Unauthorized → usuário não logado  
+  - 201 Created → CLIENT logado e dados corretos  
+  - 201 Created → ADMIN logado e dados corretos  
+  - 422 Unprocessable Entity → ADMIN logado e nome em branco  
+  - 422 Unprocessable Entity → ADMIN logado e data no passado  
+  - 422 Unprocessable Entity → ADMIN logado e cidade nula  
+
+- **GET /events**
+  - 200 Ok → retorna página de recursos  
+
+### Cidades (`/cities`)
+- **POST /cities**
+  - 401 Unauthorized → usuário não logado  
+  - 403 Forbidden → CLIENT logado  
+  - 201 Created → ADMIN logado e dados corretos  
+  - 422 Unprocessable Entity → ADMIN logado e nome em branco  
+
+- **GET /cities**
+  - 200 Ok → retorna todos recursos ordenados por nome  
+
+---
+
+# Competências Desenvolvidas
+- Desenvolvimento TDD de API Rest com Java e Spring Boot  
+- Implementação de segurança com Spring Security e OAuth2  
+- Controle de acesso por rotas e perfis de usuário  
+- Validação de dados com Bean Validation  
+
 
